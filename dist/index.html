@@ -1,0 +1,165 @@
+Html Webpack Plugin:
+<pre>
+  Error: Child compilation failed:
+  Module build failed (from ./node_modules/babel-loader/lib/index.js):
+  SyntaxError: /Users/WT/Documents/Codesmith/codesmith-solo-project/client/index.html: Unexpected token (1:0)
+  
+  > 1 | <!DOCTYPE html>
+      | ^
+    2 | <html lang="en"><head><script defer src="bundle.js"></script></head>
+    3 | <head>
+    4 |   <meta charset="UTF-8">
+      at instantiate (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:72:32)
+      at constructor (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:358:12)
+      at Object.raise (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:3341:19)
+      at Object.unexpected (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:3379:16)
+      at Object.parseExprAtom (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:13083:24)
+      at Object.parseExprAtom (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:8041:20)
+      at Object.parseExprSubscripts (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:12650:23)
+      at Object.parseUpdate (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:12629:21)
+      at Object.parseMaybeUnary (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:12600:23)
+      at Object.parseMaybeUnaryOrPrivate (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:12394:61)
+  ModuleBuildError: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+  SyntaxError: /Users/WT/Documents/Codesmith/codesmith-solo-project/client/index.html: Unexpected token (1:0)
+  
+  > 1 | <!DOCTYPE html>
+      | ^
+    2 | <html lang="en">
+    3 | <head>
+    4 |   <meta charset="UTF-8">
+      at instantiate (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:72:32)
+      at constructor (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:358:12)
+      at Object.raise (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:3341:19)
+      at Object.unexpected (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:3379:16)
+      at Object.parseExprAtom (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:13083:24)
+      at Object.parseExprAtom (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:8041:20)
+      at Object.parseExprSubscripts (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:12650:23)
+      at Object.parseUpdate (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:12629:21)
+      at Object.parseMaybeUnary (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:12600:23)
+      at Object.parseMaybeUnaryOrPrivate (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/@babel/parser/lib/index.js:12394:61)
+      at processResult (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/webpack/lib/NormalModule.js:758:19)
+      at /Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/webpack/lib/NormalModule.js:860:5
+      at /Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/loader-runner/lib/LoaderRunner.js:400:11
+      at /Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/loader-runner/lib/LoaderRunner.js:252:18
+      at context.callback (/Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/loader-runner/lib/LoaderRunner.js:124:13)
+      at /Users/WT/Documents/Codesmith/codesmith-solo-project/node_modules/babel-loader/lib/index.js:59:103
+  
+  - index.js:72 instantiate
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:72:32
+  
+  - index.js:358 constructor
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:358:12
+  
+  - index.js:3341 Object.raise
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:3341:19
+  
+  - index.js:3379 Object.unexpected
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:3379:16
+  
+  - index.js:13083 Object.parseExprAtom
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:13083:24
+  
+  - index.js:8041 Object.parseExprAtom
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:8041:20
+  
+  - index.js:12650 Object.parseExprSubscripts
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:12650:23
+  
+  - index.js:12629 Object.parseUpdate
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:12629:21
+  
+  - index.js:12600 Object.parseMaybeUnary
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:12600:23
+  
+  - index.js:12394 Object.parseMaybeUnaryOrPrivate
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:12394:61
+  
+  - ModuleBuildError: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+  
+  - SyntaxError: /Users/WT/Documents/Codesmith/codesmith-solo-project/client/index.html: Unexpected token (1:0)
+  
+  - > 1 | <!DOCTYPE html>
+  
+  -     | ^
+  
+  -   2 | <html lang="en">
+  
+  -   3 | <head>
+  
+  -   4 |   <meta charset="UTF-8">
+  
+  - index.js:72 instantiate
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:72:32
+  
+  - index.js:358 constructor
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:358:12
+  
+  - index.js:3341 Object.raise
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:3341:19
+  
+  - index.js:3379 Object.unexpected
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:3379:16
+  
+  - index.js:13083 Object.parseExprAtom
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:13083:24
+  
+  - index.js:8041 Object.parseExprAtom
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:8041:20
+  
+  - index.js:12650 Object.parseExprSubscripts
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:12650:23
+  
+  - index.js:12629 Object.parseUpdate
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:12629:21
+  
+  - index.js:12600 Object.parseMaybeUnary
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:12600:23
+  
+  - index.js:12394 Object.parseMaybeUnaryOrPrivate
+    [codesmith-solo-project]/[@babel]/parser/lib/index.js:12394:61
+  
+  - NormalModule.js:758 processResult
+    [codesmith-solo-project]/[webpack]/lib/NormalModule.js:758:19
+  
+  - NormalModule.js:860 
+    [codesmith-solo-project]/[webpack]/lib/NormalModule.js:860:5
+  
+  - LoaderRunner.js:400 
+    [codesmith-solo-project]/[loader-runner]/lib/LoaderRunner.js:400:11
+  
+  - LoaderRunner.js:252 
+    [codesmith-solo-project]/[loader-runner]/lib/LoaderRunner.js:252:18
+  
+  - LoaderRunner.js:124 context.callback
+    [codesmith-solo-project]/[loader-runner]/lib/LoaderRunner.js:124:13
+  
+  - index.js:59 
+    [codesmith-solo-project]/[babel-loader]/lib/index.js:59:103
+  
+  - child-compiler.js:169 
+    [codesmith-solo-project]/[html-webpack-plugin]/lib/child-compiler.js:169:18
+  
+  - Compiler.js:551 finalCallback
+    [codesmith-solo-project]/[webpack]/lib/Compiler.js:551:5
+  
+  - Compiler.js:577 
+    [codesmith-solo-project]/[webpack]/lib/Compiler.js:577:11
+  
+  - Compiler.js:1196 
+    [codesmith-solo-project]/[webpack]/lib/Compiler.js:1196:17
+  
+  
+  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [codesmith-solo-project]/[tapable]/lib/Hook.js:18:14
+  
+  - Compiler.js:1192 
+    [codesmith-solo-project]/[webpack]/lib/Compiler.js:1192:33
+  
+  - Compilation.js:2787 finalCallback
+    [codesmith-solo-project]/[webpack]/lib/Compilation.js:2787:11
+  
+  - Compilation.js:3092 
+    [codesmith-solo-project]/[webpack]/lib/Compilation.js:3092:11
+  
+  
+</pre>
