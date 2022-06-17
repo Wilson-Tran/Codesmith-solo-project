@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+
 module.exports = {
   entry: './client/index.js',
   output: {
@@ -9,6 +10,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   mode: 'development',
+  target: 'node',
   devServer: {
     host: 'localhost', 
     port: 8080, 
