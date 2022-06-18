@@ -28,7 +28,7 @@ const CreatePatient = props => {
         lastName, 
         doctor
       };
-      fetch('/api', {
+      fetch('/api/create', {
         method: 'POST', 
         headers: {
           'Content-Type': 'Application/JSON'
@@ -37,7 +37,7 @@ const CreatePatient = props => {
       })
         .then(res => res.json())
         .then((data) => {
-          props.history.push('/api/patients')
+          props.history.push('/')
         })
         .catch(err => console.log('CreatePatient fetch /patients: ERROR: ', err))
     }

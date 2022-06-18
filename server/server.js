@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // handle requests for static files
-app.use(express.static(path.resolve(__dirname, '../client')));
+app.use('/', express.static(path.resolve(__dirname, '../client')));
 
 // define route handler
 app.use('/api', apiRouter);
