@@ -19,19 +19,22 @@ mongoose
   const seedPatients = [];
   const state = 'CA';
   for (let i = 0; i < 5; i++) {
+    let dr;
+    Math.random() < 0.5 ? dr = 'Dr. Tran' : dr = 'Dr. Zhao'
     
     seedPatients.push({
-      contact: {
-        firstName: faker.name.firstName(),
-        lastName: faker.name.lastName(),
-        address: faker.address.streetAddress(),
-        city: faker.address.cityName(), 
-        state: state,
-        zip: faker.address.zipCodeByState(state),
-        phone: faker.phone.phoneNumber(),
-        altContactName: faker.name.findName(),
-        altContactPhone: faker.phone.phoneNumber()
-      }
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      // contact: {
+      //   address: faker.address.streetAddress(),
+      //   city: faker.address.cityName(), 
+      //   state: state,
+      //   zip: faker.address.zipCodeByState(state),
+      //   phone: faker.phone.phoneNumber(),
+      //   altContactName: faker.name.findName(),
+      //   altContactPhone: faker.phone.phoneNumber()
+      // }
+      doctor: dr
     })
   }
 

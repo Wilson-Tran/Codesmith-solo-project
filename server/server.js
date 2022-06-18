@@ -3,7 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const patientController = require('./controllers/patientController');
+const apiRouter = require('./routes/api')
 
 const app = express();
 const PORT = 3000;
@@ -23,16 +23,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, '../client')));
 
 // define route handler
-app.get('/', (req, res) => {
-  res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
-})
-app.get('/patients', patientController.getAllUsers, (req, res) => {
-  res.status(200).send({patients: res.locals.patients})
-});
+app.use('/api', apiRouter);
 
 
 // catch all for unknown routes
-app.use('*', (req, res) => res.status(404).send('Page not found'));
+app.use((req, res) => res.status(404).send('Page not found'));
 
 // express error handler
 

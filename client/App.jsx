@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'; // Switch is now Routes in new version of react-router-dom?
+import CreatePatient from './components/CreatePatient';
+
 
 import Login from './components/Login';
 
@@ -12,10 +14,14 @@ const App = props => {
         <Routes>
           <Route 
             exact 
-            path="/"
+            path="/login"
             component={Login}
             />
-
+          <Route 
+            exact
+            path="/api/patients"
+            component={CreatePatient}
+          />
         </Routes>
       </main>
     </div>
