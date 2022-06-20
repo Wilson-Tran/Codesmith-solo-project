@@ -3,7 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const apiRouter = require('./routes/api')
+const apiRouter = require('./routes/api');
 
 const app = express();
 const PORT = 3000;
@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // handle requests for static files
-app.use('/', express.static(path.resolve(__dirname, '../client')));
+app.use(express.static(path.resolve(__dirname, '../client')));
 
 // define route handler
 app.use('/api', apiRouter);
@@ -30,8 +30,6 @@ app.use('/api', apiRouter);
 app.use((req, res) => res.status(404).send('Page not found'));
 
 // express error handler
-
-
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error', 

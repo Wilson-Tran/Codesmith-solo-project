@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, withRouter, useHistory } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 // Custom hook for handling input boxes
 // saves us from creating onChange handlers for them individually
@@ -16,8 +16,9 @@ const CreatePatient = props => {
   const [ firstName, firstNameOnChange ] = useInput('');
   const [ lastName, lastNameOnChange ] = useInput('');
   const [ doctor, doctorOnChange ] = useInput('');
-  const [ firstNameError, setNameError ] = useState(null);
+  const [ nameError, setNameError ] = useState(null);
   
+  const navigate = useNavigate();
   const savePatient = () => {
     // check if name is empty
     if (firstName === '' || lastName === '') {
@@ -28,7 +29,7 @@ const CreatePatient = props => {
         lastName, 
         doctor
       };
-      fetch('/api/create', {
+      fetch('/api/patients', {
         method: 'POST', 
         headers: {
           'Content-Type': 'Application/JSON'
@@ -37,7 +38,8 @@ const CreatePatient = props => {
       })
         .then(res => res.json())
         .then((data) => {
-          props.history.push('/')
+          console.log(data);
+          navigate('/');
         })
         .catch(err => console.log('CreatePatient fetch /patients: ERROR: ', err))
     }
@@ -57,7 +59,7 @@ const CreatePatient = props => {
         <h2> New Patient Registration</h2>
         <Link to="/" className="backLink">
           <button type="button" className="btnSecondary">
-              Back to all characters
+              Back to all patients
           </button>
         </Link>
       </header>
@@ -76,7 +78,6 @@ const CreatePatient = props => {
         <div className="createPatientFields">
           <label htmlFor="doctor">Doctor: </label>
           <input name="doctor" placeholder="Dr. Zhao" value={doctor} onChange={doctorOnChange} />
-          {nameError ? (<span className="errorMsg">{nameError}</span>) : null}
         </div>
        
         <div className="createPatientButtonContainer">
@@ -91,5 +92,6 @@ const CreatePatient = props => {
     </section>
   );
 };
+
 
 export default CreatePatient;

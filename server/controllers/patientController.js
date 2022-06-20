@@ -18,10 +18,10 @@ patientController.getAllPatients = (req, res, next) => {
 patientController.createPatient = (req, res, next) => {
   const { firstName, lastName, doctor } = req.body;
   Patients.create({ firstName, lastName, doctor })  
-  .then((data) => { 
+    .then((data) => { 
       console.log(data);
       return next();
-    })
-}
+    });
+};
 
 module.exports = patientController; 

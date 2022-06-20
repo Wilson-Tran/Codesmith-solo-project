@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path')
+const path = require('path');
 
 const patientController = require('../controllers/patientController');
 
@@ -10,12 +10,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/patients', patientController.getAllPatients, (req, res) => {
-  res.status(200).json({patients: res.locals.patientData})
+  return res.status(200).json(res.locals.patientData);
 });
 
-router.post('/create', patientController.createPatient, (req, res) => {
+router.post('/patients', patientController.createPatient, (req, res) => {
   res.status(201).redirect('/api/patients');
-})
+});
 
 
 module.exports = router;
