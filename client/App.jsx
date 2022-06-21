@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Switch is no
 import CreatePatient from './components/CreatePatient';
 import Login from './components/Login';
 import Patients from './components/Patients';
+import UpdatePatient from './components/UpdatePatient';
 
 import './stylesheets/styles.css';
 
@@ -14,8 +15,10 @@ const App = props => {
     <div className="router">
       <main>
         <Routes>
-          <Route path="/" element={<Patients />}/>
+          <Route path="/" element={<Login />}/>
+          <Route path="/patients" element={<Patients />}/>
           <Route path="/create" element={<CreatePatient />}/>
+          <Route path="/update/:id" element={<UpdatePatient />}/>
         </Routes>
       </main>
     </div>

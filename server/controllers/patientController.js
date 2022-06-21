@@ -16,8 +16,8 @@ patientController.getAllPatients = (req, res, next) => {
 };
 
 patientController.createPatient = (req, res, next) => {
-  const { firstName, lastName, doctor } = req.body;
-  Patients.create({ firstName, lastName, doctor })  
+  const { firstName, lastName, dob, doctor, contact } = req.body;
+  Patients.create({ firstName, lastName, dob, doctor, contact })  
     .then((data) => { 
       console.log(data);
       return next();

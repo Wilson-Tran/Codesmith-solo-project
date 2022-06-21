@@ -16,34 +16,33 @@ mongoose
     console.log(err);
   });
   
-  const seedPatients = [];
-  const state = 'CA';
-  for (let i = 0; i < 5; i++) {
-    let dr;
-    Math.random() < 0.5 ? dr = 'Dr. Tran' : dr = 'Dr. Zhao'
+const seedPatients = [];
+const state = 'CA';
+for (let i = 0; i < 5; i++) {
+  let dr;
+  Math.random() < 0.5 ? dr = 'Dr. Tran' : dr = 'Dr. Zhao';
     
-    seedPatients.push({
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      // contact: {
-      //   address: faker.address.streetAddress(),
-      //   city: faker.address.cityName(), 
-      //   state: state,
-      //   zip: faker.address.zipCodeByState(state),
-      //   phone: faker.phone.phoneNumber(),
-      //   altContactName: faker.name.findName(),
-      //   altContactPhone: faker.phone.phoneNumber()
-      // }
-      doctor: dr
-    })
-  }
-
-  const seedDB = async () => {
-    await Patients.deleteMany({});
-    await Patients.insertMany(seedPatients);
-  };
-
-  seedDB().then(() => {
-    mongoose.connection.close();
-    console.log('MONGO CONNECTION CLOSED');
+  seedPatients.push({
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    dob: faker.date.between('01/01/1945', '12/31/2005'),
+    doctor: dr,
+    contact: {
+      address: faker.address.streetAddress(),
+      city: faker.address.cityName(), 
+      state: state,
+      zip: faker.address.zipCodeByState(state),
+      phone: faker.phone.phoneNumber(),
+    }
   });
+}
+
+const seedDB = async () => {
+  await Patients.deleteMany({});
+  await Patients.insertMany(seedPatients);
+};
+
+seedDB().then(() => {
+  mongoose.connection.close();
+  console.log('MONGO CONNECTION CLOSED');
+});

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 // Custom hook for handling input boxes
 // saves us from creating onChange handlers for them individually
@@ -16,6 +17,7 @@ const CreatePatient = props => {
   const [ firstName, firstNameOnChange ] = useInput('');
   const [ lastName, lastNameOnChange ] = useInput('');
   const [ doctor, doctorOnChange ] = useInput('');
+  const [ dob, dobOnChange ] = useInput(null);
   const [ nameError, setNameError ] = useState(null);
   
   const navigate = useNavigate();
@@ -26,7 +28,8 @@ const CreatePatient = props => {
     } else {
       const body = {
         firstName, 
-        lastName, 
+        lastName,
+        dob, 
         doctor
       };
       fetch('/api/patients', {
@@ -39,9 +42,9 @@ const CreatePatient = props => {
         .then(res => res.json())
         .then((data) => {
           console.log(data);
-          navigate('/');
+          navigate('/patients');
         })
-        .catch(err => console.log('CreatePatient fetch /patients: ERROR: ', err))
+        .catch(err => console.log('CreatePatient fetch /patients: ERROR: ', err));
     }
   };
 
@@ -57,10 +60,10 @@ const CreatePatient = props => {
     <section className="mainSection createCharContainer">
       <header className="pageHeader">
         <h2> New Patient Registration</h2>
-        <Link to="/" className="backLink">
-          <button type="button" className="btnSecondary">
+        <Link to="/patients" className="backLink">
+          <Button variant='contained' type="button" className="btnSecondary">
               Back to all patients
-          </button>
+          </Button>
         </Link>
       </header>
       <article className="card createPatient">
@@ -76,17 +79,25 @@ const CreatePatient = props => {
           {nameError ? (<span className="errorMsg">{nameError}</span>) : null}
         </div>
         <div className="createPatientFields">
-          <label htmlFor="doctor">Doctor: </label>
-          <input name="doctor" placeholder="Dr. Zhao" value={doctor} onChange={doctorOnChange} />
+          <label htmlFor="dob">Date of Birth: </label>
+          <input type="date" name="dob" min="1930-01-01" max="2019-12-31" value={dob} onChange={dobOnChange} />
+        </div>
+        <div className="createPatientFields">
+          <label htmlFor="doctor">Physician: </label>
+          <select name="doctor" value={doctor} onChange={doctorOnChange}>
+            <option value="">--Select Physician--</option>
+            <option value="Dr. Zhao">Dr. Zhao</option>
+            <option value="Dr. Tran">Dr. Tran</option>
+          </select> 
         </div>
        
         <div className="createPatientButtonContainer">
-          <Link to="/" className="backLink">
-            <button type="button" className="btnSecondary">
+          <Link to="/patients" className="backLink">
+            <Button variant='contained' type="button" className="btnSecondary">
               Cancel
-            </button>
+            </Button>
           </Link>
-          <button type="button" className="btnMain" onClick={savePatient}>Save</button>
+          <Button variant='contained' className="btnMain" onClick={savePatient}>Save</Button>
         </div>
       </article>
     </section>

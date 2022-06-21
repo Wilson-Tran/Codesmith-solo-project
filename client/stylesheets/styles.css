@@ -1,5 +1,45 @@
+body {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: rgba(15, 135, 176, 0.915);
+  color: #eeeeee;
+}
+
 ul.no-bullets {
   list-style-type: none; /* Remove bullets */
   padding: 0; /* Remove padding */
   margin: 0; /* Remove margins */
+}
+
+.createPatientButtonContainer {
+  display: flex;
+  gap: 50px;
+  margin-top: 1.5rem;
+}
+
+.card {
+  color: black;
+  background: #f3f3f3;
+  padding: 2rem;
+  border: 1px solid lightgray;
+  box-shadow: 1px 1px 5px rgba(22, 22, 22, 0.915);
+}
+
+.createPatient {
+  max-width: 25em;
+  width: 100%;
+  align-self: center;
+}
+
+.createPatientFields {
+  width: 100%;
+  display: flex;
+  margin-bottom: 0.2rem;
+}
+
+.errorMsg {
+  color: red;
+  margin-left: 1rem;
+  font-size: 1.1rem;
+  padding-top: 0.2rem;
 }

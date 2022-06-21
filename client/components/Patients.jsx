@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Moment from 'moment';
 
 class Patients extends Component {
   constructor(props) {
@@ -45,7 +46,11 @@ class Patients extends Component {
 
     const patientElems = patients.map((char, i) => {
       return (
-        <li key={i}>{char.firstName} {char.lastName}, {char.doctor}</li>
+        <fragment key={i}><li>
+          Name: {char.firstName} {char.lastName} <br />
+          Date of Birth: {Moment(char.dob).format('MM/DD/YYYY')} <br />
+          Physician: {char.doctor}
+        </li><br /></fragment>
       );
     });
 
