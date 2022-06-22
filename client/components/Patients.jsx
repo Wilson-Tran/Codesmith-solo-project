@@ -18,7 +18,6 @@ class Patients extends Component {
       })
       .then((patients) => {
         if (!Array.isArray(patients)) {
-          console.log('response is not an array');
           patients = [];
         } 
         return this.setState({

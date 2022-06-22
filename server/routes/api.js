@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const patientController = require('../controllers/patientController');
+const userController = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -17,5 +18,8 @@ router.post('/patients', patientController.createPatient, (req, res) => {
   res.status(201).redirect('/api/patients');
 });
 
+router.post('/users', userController.verifyUser, (req, res) => {
+  return res.status(200).json(res.locals.id);
+});
 
 module.exports = router;

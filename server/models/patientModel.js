@@ -12,8 +12,6 @@ const patientSchema = new Schema({
     state: {type: String},
     zip: {type: String},
     phone: {type: String},
-    altContactName: {type: String},
-    altContactPhone: {type: String}
   }
   
 

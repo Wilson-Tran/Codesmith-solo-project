@@ -1,31 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
-
-const onSubmit = () => {
-  
-}
+import { TextField } from '@mui/material';
 
 const Login = () => {
-  return (
-    <article className='card createPatient'>
+  const [errorMessages, setErrorMessages] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const renderErrorMessage = (name) => 
+    name === errorMessages.name && (
+      <div className='errorMsg'>{errorMessages.message}</div>
+    );
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { uname, pass } = document.forms[0];
+    //console.log(uname.value, pass.value);
+    const body = {
+      username: uname.value, 
+      password: pass.value
+    };
+    fetch('/api/users', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'Application/JSON'
+      },
+      body: JSON.stringify(body)
+    }) 
+      .then(res => {
+        return res.json();
+      })
+      .then((user) => {
+        console.log(user);
+        if (user.unameError) setErrorMessages({name: 'uname', message: user.unameError}); 
+        else if (user.passError) setErrorMessages({name: 'pass', message: user.passError}); 
+        else setIsSubmitted(true);
+
+
+      })
+      .catch(err => console.log('Login.handleSubmit: get user: ERROR: ', err));
+  };
+  
+
+  const renderForm = (
+    <article className='card login'>
       <div className="form">
-        <form>
-          <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <span className='title'>Sign In</span>
           <div className="input-container">
-            <label>Username </label>
-            <input type="text" name="uname" required />
+            <TextField name="uname" label="Username" margin="normal" fullWidth autofocus required/>
+            {renderErrorMessage('uname')}
           </div>
           <div className="input-container">
-            <label>Password </label>
-            <input type="password" name="pass" required />
+            <TextField type="password" name="pass" label="Password" fullWidth required />
+            {renderErrorMessage('pass')}
           </div>
           <div className="button-container">
-            <Button variant='contained' onClick={onSubmit}>Log In</Button>
+            <Button type="submit" fullWidth variant='contained'>Sign In</Button>   
           </div>
         </form>
       </div>
     </article>
   );
-};
 
+  return (
+    <div className='login-form'>
+      {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+      
+    </div>
+  );
+};
 export default Login;

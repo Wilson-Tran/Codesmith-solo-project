@@ -19,6 +19,7 @@ const UpdatePatient = (props) => {
   const [ city, cityOnChange ] = useInput('');
   const [ state, stateOnChange ] = useInput('');
   const [ zipCode, zipCodeOnChange ] = useInput('');
+  const [ phone, phoneOnChange ] = useInput('');
   
 };
 

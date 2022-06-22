@@ -1,8 +1,8 @@
 body {
   padding-left: 1rem;
   padding-right: 1rem;
-  background: rgba(15, 135, 176, 0.915);
-  color: #eeeeee;
+  background: #F5F5F5;
+  color: #00a489;
 }
 
 ul.no-bullets {
@@ -18,11 +18,11 @@ ul.no-bullets {
 }
 
 .card {
-  color: black;
-  background: #f3f3f3;
+  color: #00a489;
+  background: #F6F5F5;
   padding: 2rem;
-  border: 1px solid lightgray;
-  box-shadow: 1px 1px 5px rgba(22, 22, 22, 0.915);
+  border: 1px solid #D3E0EA;
+  box-shadow: 1px 1px 5px #004a3ee5;
 }
 
 .createPatient {
@@ -42,4 +42,17 @@ ul.no-bullets {
   margin-left: 1rem;
   font-size: 1.1rem;
   padding-top: 0.2rem;
+}
+
+.login-form {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: rgb(0, 153, 158);
 }
