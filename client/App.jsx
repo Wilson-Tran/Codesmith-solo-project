@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Switch is now Routes in new version of react-router-dom?
 
 import CreatePatient from './components/CreatePatient';
+import DeleteDialog from './components/DeleteDialog';
 import Login from './components/Login';
 import Patients from './components/Patients';
 import UpdatePatient from './components/UpdatePatient';

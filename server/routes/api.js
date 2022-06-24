@@ -15,11 +15,28 @@ router.get('/patients', patientController.getAllPatients, (req, res) => {
 });
 
 router.post('/patients', patientController.createPatient, (req, res) => {
-  res.status(201).redirect('/api/patients');
+  res.redirect('/api/patients');
 });
+
+router.get('/patients/:id', patientController.getOnePatient, (req, res) => {
+  return res.status(200).json(res.locals.patientData);
+}); 
+
+router.patch('/patients/:id', (req, res) => {
+  console.log(req.params.id);
+  return res.status(200);
+});
+
+router.delete('/patients/:id', patientController.deletePatient, (req, res) => {
+  return res.status(200);
+});
+
 
 router.post('/users', userController.verifyUser, (req, res) => {
   return res.status(200).json(res.locals.id);
 });
+
+
+
 
 module.exports = router;

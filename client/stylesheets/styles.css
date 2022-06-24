@@ -1,10 +1,21 @@
+
 body {
   padding-left: 1rem;
   padding-right: 1rem;
   background: #F5F5F5;
   color: #00a489;
+  font-family: roboto;
 }
 
+/* label {
+  margin: .3rem .5rem;
+  font-size: 1rem;
+
+}
+input {
+  margin: .3rem;
+  height: 2rem;
+} */
 ul.no-bullets {
   list-style-type: none; /* Remove bullets */
   padding: 0; /* Remove padding */
@@ -34,7 +45,11 @@ ul.no-bullets {
 .createPatientFields {
   width: 100%;
   display: flex;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.4rem;
+  align-items: center;
+}
+.createPatientFields label {
+  margin-right: 1rem; 
 }
 
 .errorMsg {
@@ -56,3 +71,16 @@ ul.no-bullets {
   font-size: 1.5rem;
   color: rgb(0, 153, 158);
 }
+
+.patientContainer {
+  display: flex;
+  border: 1px solid;
+  box-shadow: 1px 1px 5px;
+  margin: 10px;
+}
+
+.patientInfo {
+  width: 100%;
+  padding: 1rem;
+}
+

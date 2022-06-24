@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { TextField } from '@mui/material';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
   const [errorMessages, setErrorMessages] = useState({});
@@ -40,6 +41,7 @@ const Login = () => {
       .catch(err => console.log('Login.handleSubmit: get user: ERROR: ', err));
   };
   
+  const navigate = useNavigate();
 
   const renderForm = (
     <article className='card login'>
@@ -64,7 +66,7 @@ const Login = () => {
 
   return (
     <div className='login-form'>
-      {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+      {isSubmitted ? navigate('/patients') : renderForm}
       
     </div>
   );

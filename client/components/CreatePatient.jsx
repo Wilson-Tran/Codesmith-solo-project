@@ -17,7 +17,12 @@ const CreatePatient = props => {
   const [ firstName, firstNameOnChange ] = useInput('');
   const [ lastName, lastNameOnChange ] = useInput('');
   const [ doctor, doctorOnChange ] = useInput('');
-  const [ dob, dobOnChange ] = useInput(null);
+  const [ dob, dobOnChange ] = useInput('');
+  const [ address, addressOnChange ] = useInput('');
+  const [ city, cityOnChange ] = useInput('');
+  const [ state, stateOnChange ] = useInput('');
+  const [ zip, zipOnChange ] = useInput('');
+  const [ phone, phoneOnChange ] = useInput('');
   const [ nameError, setNameError ] = useState(null);
   
   const navigate = useNavigate();
@@ -30,7 +35,14 @@ const CreatePatient = props => {
         firstName, 
         lastName,
         dob, 
-        doctor
+        doctor, 
+        contact: {
+          address, 
+          city, 
+          state, 
+          zip, 
+          phone
+        }
       };
       fetch('/api/patients', {
         method: 'POST', 
@@ -69,7 +81,7 @@ const CreatePatient = props => {
       <article className="card createPatient">
         <h3>Enter your patient details</h3>
         <div className="createPatientFields">
-          <label htmlFor="firstName">First Name: </label>
+          <label htmlFor="firstName">First Name:</label>
           <input name="firstName" placeholder="John" value={firstName} onChange={firstNameOnChange} />
           {nameError ? (<span className="errorMsg">{nameError}</span>) : null}
         </div>
@@ -90,7 +102,26 @@ const CreatePatient = props => {
             <option value="Dr. Tran">Dr. Tran</option>
           </select> 
         </div>
-       
+        <div className="createPatientFields">
+          <label htmlFor="phone">Phone Number: </label>
+          <input name="phone" value={phone} onChange={phoneOnChange} />
+        </div>
+        <div className="createPatientFields">
+          <label htmlFor="address">Street Address: </label>
+          <input name="address" value={address} onChange={addressOnChange} />
+        </div>
+        <div className="createPatientFields">
+          <label htmlFor="city">City: </label>
+          <input name="city" value={city} onChange={cityOnChange} />
+        </div>
+        <div className="createPatientFields">
+          <label htmlFor="state">State: </label>
+          <input name="city" value={state} onChange={stateOnChange} />
+        </div>
+        <div className="createPatientFields">
+          <label htmlFor="zip">Zip Code: </label>
+          <input name="zip" value={zip} onChange={zipOnChange} />
+        </div>
         <div className="createPatientButtonContainer">
           <Link to="/patients" className="backLink">
             <Button variant='contained' type="button" className="btnSecondary">
