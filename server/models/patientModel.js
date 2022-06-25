@@ -12,7 +12,8 @@ const patientSchema = new Schema({
     state: {type: String},
     zip: {type: String},
     phone: {type: String},
-  }
+  }, 
+  appointments: {type: Array}
   
 
 });

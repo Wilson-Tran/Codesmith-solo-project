@@ -33,7 +33,21 @@ for (let i = 0; i < 5; i++) {
       state: state,
       zip: faker.address.zipCodeByState(state),
       phone: faker.phone.phoneNumber(),
-    }
+    }, 
+    appointments: [
+      {
+        date: faker.date.between('01/01/2000', '06/24/2022'), 
+        purpose: Math.random() < 0.5 ? 'Routine - Checkup' : 'Other'
+      },
+      {
+        date: faker.date.between('01/01/2000', '06/24/2022'), 
+        purpose: Math.random() < 0.5 ? 'Routine - Checkup' : 'Other'
+      },
+      {
+        date: faker.date.between('01/01/2000', '06/24/2022'), 
+        purpose: Math.random() < 0.5 ? 'Routine - Checkup' : 'Other'
+      }
+    ]
   });
 }
 

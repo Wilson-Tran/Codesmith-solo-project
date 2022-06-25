@@ -15,7 +15,11 @@ const DeleteDialog = (props) => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleCloseNo = () => {
+    setOpen(false);
+  };
+  
+  const handleCloseYes = () => {
     setOpen(false);
     fetch(('/api/patients/' + props.id), {
       method: 'DELETE', 
@@ -28,17 +32,18 @@ const DeleteDialog = (props) => {
         console.log(data);
       })
       .catch(err => console.log('DeleteDialog fetch /patients/', props.id, ': ERROR: ', err));
+      window.location.reload();
   };
 
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button size="medium" className="deleteButton" variant="outlined" sx={{color: 'red', borderColor: 'red'}} onClick={handleClickOpen}>
         Delete
       </Button>
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={handleCloseNo}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -51,8 +56,8 @@ const DeleteDialog = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>No</Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={handleCloseNo}>No</Button>
+          <Button onClick={handleCloseYes} autoFocus>
             Yes
           </Button>
         </DialogActions>

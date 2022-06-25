@@ -17,6 +17,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Button from '@mui/material/Button';
 import DeleteDialog from './DeleteDialog';
+import { ButtonGroup } from '@mui/material';
 
 
 
@@ -94,8 +95,77 @@ const Patients = () => {
   //     </div>
   //   </section>
   // );
+
+  function Row(props) {
+    const { row } = props;
+    const [open, setOpen] = React.useState(false);
+  
+    return (
+      <React.Fragment>
+        <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+          <TableCell>
+            <IconButton
+              aria-label="expand row"
+              size="small"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          </TableCell>
+          <TableCell component="th" scope="row">
+            {row._id.slice(-7)}
+          </TableCell>
+          <TableCell align="right">{row.firstName} {row.lastName}</TableCell>
+          <TableCell align="right">{row.contact ? row.contact.phone : 'N/A'}</TableCell>
+          <TableCell align="right">{row.doctor}</TableCell>
+          <TableCell align="right">
+            <Link to={'/update/' + row._id} className="backLink">
+              <Button size="medium" variant="contained">Edit Info</Button>
+            </Link>
+            <DeleteDialog id={row._id}></DeleteDialog>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <Box sx={{ margin: 1 }}>
+                <Typography variant="h6" gutterBottom component="div">
+                  History
+                </Typography>
+                <Table size="small" aria-label="purchases">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Date</TableCell>
+                      <TableCell>Customer</TableCell>
+                      <TableCell align="right">Amount</TableCell>
+                      <TableCell align="right">Total price ($)</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {row.appointments.map((historyRow) => (
+                      <TableRow key={historyRow.date}>
+                        <TableCell component="th" scope="row">
+                          {historyRow.date}
+                        </TableCell>
+                        <TableCell>{historyRow.customerId}</TableCell>
+                        <TableCell align="right">{historyRow.amount}</TableCell>
+                        <TableCell align="right">
+                          {Math.round(historyRow.amount * row.price * 100) / 100}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </Box>
+            </Collapse>
+          </TableCell>
+        </TableRow>
+      </React.Fragment>
+    );
+  }
+    
   return (
-    <div className="patientContainer">
+    <div className="patientsContainer">
       <div className="newPatientBtnContainer">
         <Link to="/create" className="backLink">
           <Button className="newPatientBtn" variant="contained">New Patient</Button>
@@ -105,6 +175,7 @@ const Patients = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell></TableCell>
               <TableCell>Patient ID</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Contact</TableCell>
@@ -113,22 +184,7 @@ const Patients = () => {
           </TableHead>
           <TableBody>
             {patients.map((row) => (
-              <TableRow
-                key={row._id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row">
-                  {row._id.slice(-7)}
-                </TableCell>
-                <TableCell align="right">{row.firstName} {row.lastName}</TableCell>
-                <TableCell align="right">{row.contact ? row.contact.phone : 'N/A'}</TableCell>
-                <TableCell align="right">{row.doctor}</TableCell>
-                <TableCell align="right">
-                  <Link to={'/update/' + row._id} className="backLink">
-                    <Button variant="contained">Edit Info</Button>
-                  </Link>
-                  <DeleteDialog id={row._id}></DeleteDialog>
-                </TableCell>
-              </TableRow>
+              <Row key={row.name} row={row} />
             ))}
           </TableBody>
         </Table>
